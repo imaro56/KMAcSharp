@@ -1,7 +1,6 @@
 ﻿namespace CinemaManager.ViewModels
 {
-    public class Class1
+    internal class MovieSessionViewModel
     {
-
     }
 }
