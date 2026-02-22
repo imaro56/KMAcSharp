@@ -1,7 +1,7 @@
 ﻿using CinemaManager.Models;
 namespace CinemaManager.ViewModels
 {
-    public class CinemaHallViewModel
+    public class CinemaHallViewModel // View model for halls, that contains all info that should be displayed
     {
         public int Id { get; set;  }
         public string Name { get; set; }

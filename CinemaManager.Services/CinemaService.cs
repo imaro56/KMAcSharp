@@ -1,26 +1,22 @@
 ﻿using CinemaManager.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CinemaManager.Services
 {
     public class CinemaService
     {
-        public List<CinemaHallViewModel> GetAllHalls()
+        public List<CinemaHallViewModel> GetAllHalls() // Get list for all halls in fake storage
         {
-            return FakeDataStore.CinemaHalls.Select(hall => new CinemaHallViewModel
-            {
-                Id = hall.Id,
-                Name = hall.Name,
-                SeatsNumber = hall.SeatsNumber,
-                Type = hall.Type
-            }).ToList();
+            return FakeDataStore.CinemaHalls
+                .Select(hall => new CinemaHallViewModel
+                {
+                    Id = hall.Id,
+                    Name = hall.Name,
+                    SeatsNumber = hall.SeatsNumber,
+                    Type = hall.Type
+                }).ToList();
         }
 
-        public List<MovieSessionViewModel> GetSessionsByHall(int hallId)
+        public List<MovieSessionViewModel> GetSessionsForHall(int hallId) // Get list of sessions for certain hall in fake storage
         {
             return FakeDataStore.MovieSessions
                 .Where(session => session.CinemaHallId == hallId)
@@ -35,6 +31,5 @@ namespace CinemaManager.Services
                     DurationMinutes = session.DurationMinutes
                 }).ToList();
         }
-
     }
 }

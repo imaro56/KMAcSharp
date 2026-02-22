@@ -1,22 +1,16 @@
 ﻿using CinemaManager.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CinemaManager.Services
 {
     internal static class FakeDataStore
     {
-        public static List<CinemaHallEntity> CinemaHalls { get; } = new List<CinemaHallEntity>
+        public static List<CinemaHallEntity> CinemaHalls { get; } = new List<CinemaHallEntity> //Fake storage for cinema halls
         {
             new CinemaHallEntity(1, "Green", 120, CinemaHallType.TwoD),
             new CinemaHallEntity(2, "Blue", 80, CinemaHallType.ThreeD),
-            new CinemaHallEntity(3, "IMAX Red", 200, CinemaHallType.IMAX)
+            new CinemaHallEntity(3, "Red", 200, CinemaHallType.IMAX)
         };
 
-        public static List<MovieSessionEntity> MovieSessions { get; } = new List<MovieSessionEntity>
+        public static List<MovieSessionEntity> MovieSessions { get; } = new List<MovieSessionEntity> //Fake storage for movie sessions
         {
             // Hall 1 sessions (10 sessions)
             new MovieSessionEntity(1, 1, "Peaky Blinders: The Movie", MovieGenre.Action, 2024, new DateTime(2025, 6, 1, 9, 0, 0), 135),

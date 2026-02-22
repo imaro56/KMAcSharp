@@ -15,6 +15,8 @@ namespace CinemaManager.Models
         public int ReleaseYear { get; set; }
         public DateTime StartTime { get; set; }
         public int DurationMinutes { get; set; }
+
+        // We dont have end time, because we can calculate it in view model
         public MovieSessionEntity(int id, int cinemaHallId, string movieName, MovieGenre genre, int releaseYear, DateTime startTime, int durationMinutes)
         {
             Id = id;

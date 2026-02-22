@@ -1,7 +1,7 @@
 ﻿using CinemaManager.Models;
 namespace CinemaManager.ViewModels
 {
-    public class MovieSessionViewModel
+    public class MovieSessionViewModel // View model for movie sessions, that contains all info that should be displayed
     {
         public int Id { get; set; }
         public int CinemaHallId { get; set; }

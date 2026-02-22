@@ -1,6 +1,6 @@
 ﻿namespace CinemaManager.Models
 {
-    public enum MovieGenre
+    public enum MovieGenre // Simple enum for movie genres
     {
         Action,
         Comedy,
