@@ -4,7 +4,7 @@ namespace CinemaManager.Services
 {
     public class CinemaService
     {
-        public List<CinemaHallViewModel> GetAllHalls() // Get list for all halls in fake storage
+        public IReadOnlyList<CinemaHallViewModel> GetAllHalls() // Get list for all halls in fake storage
         {
             return FakeDataStore.CinemaHalls
                 .Select(hall => new CinemaHallViewModel
@@ -16,7 +16,7 @@ namespace CinemaManager.Services
                 }).ToList();
         }
 
-        public List<MovieSessionViewModel> GetSessionsForHall(int hallId) // Get list of sessions for certain hall in fake storage
+        public IReadOnlyList<MovieSessionViewModel> GetSessionsForHall(int hallId) // Get list of sessions for certain hall in fake storage
         {
             return FakeDataStore.MovieSessions
                 .Where(session => session.CinemaHallId == hallId)

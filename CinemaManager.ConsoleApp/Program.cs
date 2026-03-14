@@ -34,25 +34,25 @@ namespace CinemaManager.ConsoleApp
                 if (int.TryParse(input, out int choice) && choice >= 1 && choice <= halls.Count) // Parser for number and if we get it right
                 {
                     var selectedHall = halls[choice - 1];
-
-                    selectedHall.MovieSessions = service.GetSessionsForHall(selectedHall.Id);
+                    var sessions = service.GetSessionsForHall(selectedHall.Id);
+                    var totalDuration = sessions.Sum(s => s.DurationMinutes);
 
                     Console.Clear();
                     Console.WriteLine($"{selectedHall.Name}");
                     Console.WriteLine($"Type: {selectedHall.Type}");
                     Console.WriteLine($"Number of seats: {selectedHall.SeatsNumber}");
-                    Console.WriteLine($"Total session duration: {selectedHall.TotalDurationMinutes} minutes\n");
+                    Console.WriteLine($"Total session duration: {totalDuration} minutes\n");
 
-                    if (selectedHall.MovieSessions.Count == 0)
+                    if (sessions.Count == 0)
                     {
                         Console.WriteLine("No sessions available.");
                     }
                     else
                     {
                         Console.WriteLine("Sessions:");
-                        for (int i = 0; i < selectedHall.MovieSessions.Count; i++) //Same as with halls, we generate numbers in a row
+                        for (int i = 0; i < sessions.Count; i++) //Same as with halls, we generate numbers in a row
                         {
-                            var session = selectedHall.MovieSessions[i];
+                            var session = sessions[i];
                             Console.WriteLine($"  {i + 1}. {session.MovieName} ({session.Genre}, {session.ReleaseYear})");
                             Console.WriteLine($"     Start: {session.StartTime:dd.MM.yyyy HH:mm} | Duration: {session.DurationMinutes} min | End: {session.EndTime:dd.MM.yyyy HH:mm}");
                         }
@@ -65,10 +65,10 @@ namespace CinemaManager.ConsoleApp
                     if (inputSession == "0") {
                         continue;
                     }
-                    if (int.TryParse(inputSession, out int choiceSession) && choiceSession >= 1 && choiceSession <= selectedHall.MovieSessions.Count) // Same parser as we have for halls
+                    if (int.TryParse(inputSession, out int choiceSession) && choiceSession >= 1 && choiceSession <= sessions.Count) // Same parser as we have for halls
                     {
                         // Details for each session
-                        var s = selectedHall.MovieSessions[choiceSession - 1];
+                        var s = sessions[choiceSession - 1];
                         Console.Clear();
                         Console.WriteLine($"Session Details");
                         Console.WriteLine($"ID: {s.Id}");

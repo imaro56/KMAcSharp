@@ -3,8 +3,8 @@ namespace CinemaManager.ViewModels
 {
     public class MovieSessionViewModel // View model for movie sessions, that contains all info that should be displayed
     {
-        public int Id { get; set; }
-        public int CinemaHallId { get; set; }
+        public int Id { get; init; }
+        public int CinemaHallId { get; init; }
         public string MovieName { get; set; }
         public MovieGenre Genre { get; set; }
         public int ReleaseYear { get; set; }
