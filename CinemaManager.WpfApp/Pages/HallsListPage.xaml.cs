@@ -5,7 +5,7 @@ using CinemaManager.Services;
 
 namespace CinemaManager.WpfApp.Pages
 {
-    public partial class HallsListPage : Page // All halls
+    public partial class HallsListPage : Page // all halls
     {
         private readonly ICinemaService _cinemaService;
 
@@ -13,11 +13,11 @@ namespace CinemaManager.WpfApp.Pages
         {
             InitializeComponent();
             _cinemaService = App.ServiceProvider.GetRequiredService<ICinemaService>();
-            // Load halls list from service
+            // load halls list from service
             HallsListBox.ItemsSource = _cinemaService.GetAllHalls();
         }
 
-        private void HallsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) // Navigate to hall details on selection
+        private void HallsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) // navigate to hall details on selection
         {
             if (HallsListBox.SelectedItem is CinemaHallViewModel selectedHall)
             {

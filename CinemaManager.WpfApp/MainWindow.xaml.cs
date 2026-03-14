@@ -8,11 +8,11 @@ namespace CinemaManager.WpfApp
         public MainWindow()
         {
             InitializeComponent();
-            // Navigate to halls list page on startup
+            // open halls list page on startup
             MainFrame.Navigate(new HallsListPage());
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e) // Handle back navigation
+        private void BackButton_Click(object sender, RoutedEventArgs e) // back navigation
         {
             if (MainFrame.CanGoBack)
             {
@@ -20,7 +20,7 @@ namespace CinemaManager.WpfApp
             }
             else
             {
-                MainFrame.
+                Application.Current.Shutdown();
             }
         }
     }

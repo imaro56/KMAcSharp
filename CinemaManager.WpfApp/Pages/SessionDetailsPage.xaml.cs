@@ -9,7 +9,7 @@ namespace CinemaManager.WpfApp.Pages
         {
             InitializeComponent();
 
-            // Display all session details
+            // display all session details
             MovieNameText.Text = session.MovieName;
             GenreText.Text = $"Genre: {session.Genre}";
             YearText.Text = $"Release Year: {session.ReleaseYear}";

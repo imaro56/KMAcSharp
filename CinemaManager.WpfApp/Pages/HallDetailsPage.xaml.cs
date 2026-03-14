@@ -22,13 +22,13 @@ namespace CinemaManager.WpfApp.Pages
 
         private void LoadHallDetails()
         {
-            // Get hall info
+            // get hall info
             var halls = _cinemaService.GetAllHalls();
             var hall = halls.FirstOrDefault(h => h.Id == _hallId);
 
             if (hall == null) return;
 
-            // Get sessions
+            // get sessions
             var sessions = _cinemaService.GetSessionsForHall(_hallId);
 
             // hall info
@@ -40,11 +40,11 @@ namespace CinemaManager.WpfApp.Pages
             int totalDuration = sessions.Sum(s => s.DurationMinutes);
             TotalDurationText.Text = $"Total sessions duration: {totalDuration} min";
 
-            // Displaing sessions
+            // displaing sessions
             SessionsListBox.ItemsSource = sessions;
         }
 
-        private void SessionsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) // Navigate to session details on selection
+        private void SessionsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) // navigate to session details on selection
         {
             if (SessionsListBox.SelectedItem is MovieSessionViewModel selectedSession)
             {
