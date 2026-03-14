@@ -2,7 +2,7 @@
 
 namespace CinemaManager.Services
 {
-    public class CinemaService
+    public class CinemaService : ICinemaService
     {
         public IReadOnlyList<CinemaHallViewModel> GetAllHalls() // Get list for all halls in fake storage
         {
