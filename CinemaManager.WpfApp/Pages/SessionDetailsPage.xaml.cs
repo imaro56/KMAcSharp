@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using CinemaManager.ViewModels;
 
-namespace CinemaManager.WpfApp
+namespace CinemaManager.WpfApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for SessionDetailsPage.xaml
-    /// </summary>
     public partial class SessionDetailsPage : Page
     {
-        public SessionDetailsPage()
+        public SessionDetailsPage(MovieSessionViewModel session)
         {
             InitializeComponent();
+
+            // Display session details
+            MovieNameText.Text = session.MovieName;
+            GenreText.Text = $"Genre: {session.Genre}";
+            YearText.Text = $"Release Year: {session.ReleaseYear}";
+            StartTimeText.Text = $"Start Time: {session.StartTime:dd.MM.yyyy HH:mm}";
+            DurationText.Text = $"Duration: {session.DurationMinutes} min";
+            EndTimeText.Text = $"End Time: {session.EndTime:dd.MM.yyyy HH:mm}";
+            SessionIdText.Text = $"Session ID: {session.Id}";
         }
     }
 }

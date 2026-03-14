@@ -1,28 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
+using CinemaManager.Services;
+using CinemaManager.ViewModels;
 
 namespace CinemaManager.WpfApp.Pages
 {
-    /// <summary>
-    /// Interaction logic for HallDetailsPage.xaml
-    /// </summary>
     public partial class HallDetailsPage : Page
     {
-        public HallDetailsPage()
+        private readonly ICinemaService _cinemaService;
+        private readonly int _hallId;
+
+        public HallDetailsPage(int hallId)
         {
             InitializeComponent();
+
+            _hallId = hallId;
+            _cinemaService = App.ServiceProvider.GetRequiredService<ICinemaService>();
+
+            LoadHallDetails();
+        }
+
+        private void LoadHallDetails()
+        {
+            // Get hall info
+            var halls = _cinemaService.GetAllHalls();
+            var hall = halls.FirstOrDefault(h => h.Id == _hallId);
+
+            if (hall == null) return;
+
+            // Get sessions for this hall
+            var sessions = _cinemaService.GetSessionsForHall(_hallId);
+
+            // Display hall info
+            HallNameText.Text = hall.Name;
+            HallTypeText.Text = $"Type: {hall.Type}";
+            HallSeatsText.Text = $"Seats: {hall.SeatsNumber}";
+
+            // Calculate total duration
+            int totalDuration = sessions.Sum(s => s.DurationMinutes);
+            TotalDurationText.Text = $"Total sessions duration: {totalDuration} min";
+
+            // Display sessions
+            SessionsListBox.ItemsSource = sessions;
+        }
+
+        private void SessionsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SessionsListBox.SelectedItem is MovieSessionViewModel selectedSession)
+            {
+                NavigationService?.Navigate(new SessionDetailsPage(selectedSession));
+            }
         }
     }
 }
