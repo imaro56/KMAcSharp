@@ -1,4 +1,4 @@
-﻿using CinemaManager.ViewModels;
+using CinemaManager.ViewModels;
 
 namespace CinemaManager.Services
 {

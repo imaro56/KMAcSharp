@@ -10,27 +10,28 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Hall name -->
+        <!-- Hall name header -->
         <TextBlock x:Name="HallNameText"
                    FontSize="28"
                    FontWeight="Bold"
                    Grid.Row="0"/>
 
-        <!-- Hall info -->
+        <!-- Hall details info -->
         <StackPanel Grid.Row="1" Margin="0,10">
+            <TextBlock x:Name="HallIdText" FontSize="14"/>
             <TextBlock x:Name="HallTypeText" FontSize="14"/>
             <TextBlock x:Name="HallSeatsText" FontSize="14"/>
             <TextBlock x:Name="TotalDurationText" FontSize="14"/>
         </StackPanel>
 
-        <!-- Sessions header -->
+        <!-- Sessions section header -->
         <TextBlock Text="Sessions:"
                    FontSize="18"
                    FontWeight="Bold"
                    Margin="0,10"
                    Grid.Row="2"/>
 
-        <!-- Sessions list -->
+        <!-- Sessions list with all session fields -->
         <ListBox x:Name="SessionsListBox"
                  Grid.Row="3"
                  SelectionChanged="SessionsListBox_SelectionChanged">
@@ -44,6 +45,10 @@
                         </TextBlock>
                         <TextBlock>
                             <Run Text="Start: "/><Run Text="{Binding StartTime, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
+                            <Run Text=" | Duration: "/><Run Text="{Binding DurationMinutes}"/><Run Text=" min"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="End: "/><Run Text="{Binding EndTime, StringFormat='{}{0:dd.MM.yyyy HH:mm}', Mode=OneWay}"/>
                         </TextBlock>
                     </StackPanel>
                 </DataTemplate>

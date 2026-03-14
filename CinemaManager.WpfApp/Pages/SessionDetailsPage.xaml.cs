@@ -9,7 +9,7 @@ namespace CinemaManager.WpfApp.Pages
         {
             InitializeComponent();
 
-            // Display session details
+            // Display all session details
             MovieNameText.Text = session.MovieName;
             GenreText.Text = $"Genre: {session.Genre}";
             YearText.Text = $"Release Year: {session.ReleaseYear}";
@@ -17,6 +17,7 @@ namespace CinemaManager.WpfApp.Pages
             DurationText.Text = $"Duration: {session.DurationMinutes} min";
             EndTimeText.Text = $"End Time: {session.EndTime:dd.MM.yyyy HH:mm}";
             SessionIdText.Text = $"Session ID: {session.Id}";
+            HallIdText.Text = $"Hall ID: {session.CinemaHallId}";
         }
     }
 }
