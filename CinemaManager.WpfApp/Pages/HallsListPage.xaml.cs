@@ -1,7 +1,7 @@
 using System.Windows.Controls;
 using CinemaManager.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using CinemaManager.Services;
+using CinemaManager.Services.Interfaces;
 
 namespace CinemaManager.WpfApp.Pages
 {

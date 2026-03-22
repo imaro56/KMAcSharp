@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using CinemaManager.Services;
 using System.Windows;
+using CinemaManager.Services.Interfaces;
 
 namespace CinemaManager.WpfApp
 {

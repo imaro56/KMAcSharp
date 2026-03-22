@@ -1,4 +1,4 @@
-﻿namespace CinemaManager.Models
+﻿namespace CinemaManager.Repositories.Models
 {
     public enum MovieGenre // Simple enum for movie genres
     {

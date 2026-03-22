@@ -1,5 +1,5 @@
-﻿using CinemaManager.Models;
-namespace CinemaManager.Services
+﻿using CinemaManager.Repositories.Models;
+namespace CinemaManager.Repositories.Storage
 {
     internal static class FakeDataStore
     {

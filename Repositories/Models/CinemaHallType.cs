@@ -1,4 +1,4 @@
-﻿namespace CinemaManager.Models
+﻿namespace CinemaManager.Repositories.Models
 {
     public enum CinemaHallType //Simple enum for hall types
     {
