@@ -2,7 +2,7 @@
 
 namespace CinemaManager.Services.Interfaces
 {
-    public interface ICinemaHallService
+    public interface ICinemaHallService // interface for cinema hall operations
     {
         IReadOnlyList<CinemaHallListDTO> GetAllForList();
         CinemaHallDetailsDTO? GetDetails(int id);

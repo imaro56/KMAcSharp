@@ -9,7 +9,8 @@ namespace CinemaManager.Services.Implementations
         private readonly ICinemaHallRepository _hallRepository;
         private readonly IMovieSessionRepository _sessionRepository;
 
-        public CinemaHallService(ICinemaHallRepository hallRepository, IMovieSessionRepository sessionRepository)
+        
+        public CinemaHallService(ICinemaHallRepository hallRepository, IMovieSessionRepository sessionRepository) // DI via constructor
         {
             _hallRepository = hallRepository;
             _sessionRepository = sessionRepository;

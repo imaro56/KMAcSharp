@@ -1,36 +1,43 @@
 <Page x:Class="CinemaManager.WpfApp.Pages.HallsListPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Halls">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Halls">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Page header -->
+        <!-- Header -->
         <TextBlock Text="Cinema Halls List"
-                   FontSize="28"
-                   FontWeight="Bold"
-                   Margin="0,0,0,10"
-                   Grid.Row="0"/>
+                     FontSize="28"
+                     FontWeight="Bold"
+                     Margin="0,0,0,10"
+                     Grid.Row="0"/>
 
-        <!-- Halls list with all hall fields -->
-        <ListBox x:Name="HallsListBox"
-                 Grid.Row="1"
-                 SelectionChanged="HallsListBox_SelectionChanged">
+        <!-- Halls list -->
+        <ListBox Grid.Row="1"
+                   ItemsSource="{Binding Halls}"
+                   SelectedItem="{Binding SelectedHall}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
                         <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
                         <TextBlock>
-                            <Run Text="ID: "/><Run Text="{Binding Id}"/>
-                            <Run Text=" | Type: "/><Run Text="{Binding Type}"/>
-                            <Run Text=" | Seats: "/><Run Text="{Binding SeatsNumber}"/>
+                              <Run Text="ID: "/><Run Text="{Binding Id}"/>
+                              <Run Text=" | Type: "/><Run Text="{Binding Type}"/>
                         </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <!-- Halls details -->
+        <Button Grid.Row="2"
+                  Content="Open Details"
+                  Command="{Binding OpenDetailsCommand}"
+                  Margin="0,10,0,0"
+                  Padding="10,5"/>
     </Grid>
 </Page>

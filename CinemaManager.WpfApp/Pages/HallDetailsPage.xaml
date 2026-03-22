@@ -1,58 +1,70 @@
 <Page x:Class="CinemaManager.WpfApp.Pages.HallDetailsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Hall Details">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Hall Details">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Hall name header -->
-        <TextBlock x:Name="HallNameText"
-                   FontSize="28"
-                   FontWeight="Bold"
-                   Grid.Row="0"/>
+        <!-- Hall Header -->
+        <TextBlock Text="{Binding Hall.Name}"
+                     FontSize="28"
+                     FontWeight="Bold"
+                     Grid.Row="0"/>
 
-        <!-- Hall details info -->
+        <!-- Hall details -->
         <StackPanel Grid.Row="1" Margin="0,10">
-            <TextBlock x:Name="HallIdText" FontSize="14"/>
-            <TextBlock x:Name="HallTypeText" FontSize="14"/>
-            <TextBlock x:Name="HallSeatsText" FontSize="14"/>
-            <TextBlock x:Name="TotalDurationText" FontSize="14"/>
+            <TextBlock FontSize="14">
+                  <Run Text="ID: "/><Run Text="{Binding Hall.Id}"/>
+            </TextBlock>
+            <TextBlock FontSize="14">
+                  <Run Text="Type: "/><Run Text="{Binding Hall.Type}"/>
+            </TextBlock>
+            <TextBlock FontSize="14">
+                  <Run Text="Seats: "/><Run Text="{Binding Hall.SeatsNumber}"/>
+            </TextBlock>
+            <TextBlock FontSize="14">
+                  <Run Text="Total Duration: "/><Run Text="{Binding Hall.TotalDurationMinutes}"/><Run Text=" min"/>
+            </TextBlock>
         </StackPanel>
 
-        <!-- Sessions section header -->
+        <!-- Sessions header -->
         <TextBlock Text="Sessions:"
-                   FontSize="18"
-                   FontWeight="Bold"
-                   Margin="0,10"
-                   Grid.Row="2"/>
+                     FontSize="18"
+                     FontWeight="Bold"
+                     Margin="0,10"
+                     Grid.Row="2"/>
 
-        <!-- Sessions list with all session fields -->
-        <ListBox x:Name="SessionsListBox"
-                 Grid.Row="3"
-                 SelectionChanged="SessionsListBox_SelectionChanged">
+        <!-- Sessions list -->
+        <ListBox Grid.Row="3"
+                   ItemsSource="{Binding Hall.Sessions}"
+                   SelectedItem="{Binding SelectedSession}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
                         <TextBlock Text="{Binding MovieName}" FontSize="16" FontWeight="Bold"/>
                         <TextBlock>
-                            <Run Text="Genre: "/><Run Text="{Binding Genre}"/>
-                            <Run Text=" | Year: "/><Run Text="{Binding ReleaseYear}"/>
-                        </TextBlock>
-                        <TextBlock>
-                            <Run Text="Start: "/><Run Text="{Binding StartTime, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
-                            <Run Text=" | Duration: "/><Run Text="{Binding DurationMinutes}"/><Run Text=" min"/>
-                        </TextBlock>
-                        <TextBlock>
-                            <Run Text="End: "/><Run Text="{Binding EndTime, StringFormat='{}{0:dd.MM.yyyy HH:mm}', Mode=OneWay}"/>
+                              <Run Text="Start: "/><Run Text="{Binding StartTime, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"/>
                         </TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,10,0,0">
+            <Button Content="Open Session"
+                      Command="{Binding OpenSessionCommand}"
+                      Padding="10,5"
+                      Margin="0,0,10,0"/>
+            <Button Content="Back"
+                      Command="{Binding GoBackCommand}"
+                      Padding="10,5"/>
+        </StackPanel>
     </Grid>
 </Page>
