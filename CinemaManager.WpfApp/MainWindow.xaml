@@ -8,15 +8,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="BackButton"
-                Content="Back"
+        <Button x:Name="ExitButton"
+                Content="Exit"
                 Margin="20"
-                Click="BackButton_Click"
+                Click="ExitButton_Click"
                 Padding="30 10"
                 Grid.Row="0"
                 HorizontalAlignment="Left"/>
         <Frame x:Name="MainFrame"
-               Grid.Row="1"
-               NavigationUIVisibility="Hidden"/>
+                Grid.Row="1"
+                NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
